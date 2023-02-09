@@ -1,0 +1,36 @@
+server:
+  port: 8004
+
+spring:
+  application:
+    name: grpc-server
+
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+
+  output:
+    ansi:
+      enabled: always
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: admin123!
+    hikari:
+      idle-timeout: 30000
+      maximum-pool-size: 20
+      max-lifetime: 1800000
+      pool-name: StoreHikariPool
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+
+# port를 지정하지 않으면 기본 9090 Port 세팅
+grpc:
+  server:
+    port: 9000
+
+logging:
+  level:
+    com.roopy: debug

@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package ="com.roopy.proto";
+
+message StoreRequest {
+  int32 id = 1;
+  double lat = 2;
+  double lot = 3;
+  int32 radius = 4;
+}
+
+message StoreInfo {
+  int32 id = 1;
+  string nm = 2;
+  string addr = 3;
+  double lat = 4;
+  double lot = 5;
+  int32 dtnc = 6;
+}
+
+message StoreResponse {
+  repeated StoreInfo storeInfos = 1;
+}
+
+service StoreService {
+  // Unary
+  rpc findStoreWithPointAndRadiusUnary(StoreRequest) returns (StoreResponse);
+
+  // Unary
+  rpc findStoreWithPointAndRadiusBidirectional(stream StoreRequest) returns (stream StoreResponse);
+
+  // Single Bidirectional
+  rpc findStoreByIdBidirectional(stream StoreRequest) returns (stream StoreInfo);
+
+}

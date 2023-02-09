@@ -1,0 +1,27 @@
+server:
+  port: 8003
+
+spring:
+  application:
+    name: grpc-client
+
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+
+  output:
+    ansi:
+      enabled: always
+
+grpc:
+  client:
+    hello:
+      address: 'static://localhost:9000'
+      negotiationType: plaintext
+    store:
+      address: 'static://localhost:9000'
+      negotiationType: plaintext
+
+logging:
+  level:
+    com.roopy: debug
